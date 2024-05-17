@@ -12,18 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-project(track_simulator)
+project(train_simulator)
 
 cmake_minimum_required(VERSION 3.5)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(track_simulator
-    main.cpp
-    TrackGraph.hpp
+add_executable(train_simulator
+    src/main.cpp
 )
 
-target_link_libraries(track_simulator
+target_include_directories(train_simulator
     PRIVATE
-    boost_graph)
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    "/usr/include/opencv4"
+)
+
+target_link_libraries(train_simulator
+    PRIVATE
+    opencv_core
+    opencv_highgui
+    opencv_imgproc
+    opencv_imgcodecs)
 
